@@ -192,7 +192,8 @@ public class MainActivity extends AppCompatActivity {
         museumGlassSubtotalSummary.setText("Museum: $" + df.format(totalMuseumGlassPrice));
 
         TextView tvAddOnSummary = findViewById(R.id.tvAddOnSubtotalOutput);
-        tvAddOnSummary.setText("Add Ons: $" + df.format(addOnSubtotal));
+        tvAddOnSummary.setText("$" + df.format(addOnSubtotal));
+
     }
 
     @NonNull
