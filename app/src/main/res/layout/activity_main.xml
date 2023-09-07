@@ -192,7 +192,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayout6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEnterFrameDetails">
 
@@ -206,14 +206,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout6"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/tietFramePricePerFootBox"
-        tools:layout_editor_absoluteX="8dp">
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tietFramePricePerFootBox"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnterFrameDetails">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietFilletPricePerFoot"
@@ -221,6 +223,100 @@
             android:layout_height="wrap_content"
             android:hint="Fillet Price Per Foot" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvMisc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Misc: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMisc">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietFoamCoreQty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Foam Core Qty"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietMiscHardware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Misc. Hardware Price"
+            android:inputType="number|numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvGlassOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
+        android:text="Glass Options:" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgGlass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGlassOptions"
+        >
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCCGlass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="CC Glass" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMuseumGlass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Museum Glass" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="None" />
+    </com.google.android.material.chip.ChipGroup>
 
     <TextView
         android:id="@+id/tvAddOns"
@@ -232,10 +328,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/cgGlass" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
+        android:id="@+id/cgAddOns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -259,20 +355,6 @@
             android:text="Spacers" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCCGlass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="CC Glass" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipMuseumGlass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:text="Museum Glass" />
-
-        <com.google.android.material.chip.Chip
             android:id="@+id/chipHardware"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -285,23 +367,23 @@
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/cgAddOns" />
 
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:showDividers="middle|beginning|end"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btnSubmit">
-
+        app:layout_constraintTop_toBottomOf="@id/btnSubmit">
 
 
         <TableRow
@@ -334,7 +416,8 @@
         <TableRow
             android:id="@+id/trFrameSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
 
             <TextView
                 android:id="@+id/tvFrameSubtotal"
@@ -361,7 +444,8 @@
         <TableRow
             android:id="@+id/trFilletSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
 
             <TextView
                 android:id="@+id/tvFilletSubtotal"
@@ -371,7 +455,7 @@
                 android:padding="10sp"
                 android:text="Fillet Subtotal:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#000000"/>
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvFilletSubtotalOutput"
@@ -381,13 +465,14 @@
                 android:padding="10sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
-                android:visibility="visible"/>
+                android:visibility="visible" />
         </TableRow>
 
         <TableRow
             android:id="@+id/trMatSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
 
             <TextView
                 android:id="@+id/tvMatSubtotal"
@@ -412,47 +497,24 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/trAddOnSubtotal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvAddOnSubtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:padding="10sp"
-                android:text="Add-On Subtotal:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/tvAddOnSubtotalOutput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#000000" />
-        </TableRow>
-
-        <TableRow
             android:id="@+id/trGlassSubtotal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:dividerPadding="2dp">
 
             <TextView
-                android:id="@+id/tvCCGlassSubtotalOutput"
+                android:id="@+id/tvGlassSubtotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
+                android:text="Glass Subtotal: "
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/tvMuseumGlassSubtotalOutput"
+                android:id="@+id/tvGlassSubtotalOutput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -468,35 +530,148 @@
         android:id="@+id/tableLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tableLayout1">>
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:background="#FFFFFF"
+        android:showDividers="middle|beginning|end"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSubmit">
 
         <TableRow
             android:id="@+id/trMaterialSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TextView
+                android:id="@+id/tvMaterialSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="10sp"
+                android:text="Material Subtotal:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tvMaterialSubtotalOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:visibility="visible" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/trFittingAndLaborSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TextView
+                android:id="@+id/tvFittingAndLaborSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="10sp"
+                android:text="Fitting and Labor Subtotal:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tvFittingAndLaborSubtotalOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:visibility="visible" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/trSubtotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TextView
+                android:id="@+id/tvSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="10sp"
+                android:text="Subtotal:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tvSubtotalOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:visibility="visible" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/trTax"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TextView
+                android:id="@+id/tvTax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="10sp"
+                android:text="Tax:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tvTaxOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:visibility="visible" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/trTotal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerPadding="2dp">
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="10sp"
+                android:text="Total: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tvTotalOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:visibility="visible" />
+        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
