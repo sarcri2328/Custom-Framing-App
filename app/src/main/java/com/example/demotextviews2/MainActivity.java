@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.chip.Chip;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,6 +76,39 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        // Gather User input from Fillet Price per Foot field
+        EditText tietFilletPricePerFoot = findViewById(R.id.tietFilletPricePerFoot);
+        String filletPricePerFootStr = tietFilletPricePerFoot.getText().toString();
+        int filletPricePerFoot;
+        try {
+            filletPricePerFoot = Integer.parseInt(filletPricePerFootStr);
+        } catch (NumberFormatException ex5) {
+            Toast.makeText(this, "Fillet price input field must not be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Gather User input from Standard Mat Price field
+        EditText tietStandardMatPrice = findViewById(R.id.tietStandardMatPrice);
+        String standardMatPriceStr = tietStandardMatPrice.getText().toString();
+        int standardMatPrice;
+        try {
+            standardMatPrice = Integer.parseInt(standardMatPriceStr);
+        } catch (NumberFormatException ex6) {
+            Toast.makeText(this, "Standard Mat price input field must not be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Gather User input from Textured Mat Price field
+        EditText tietTexturedMatPrice = findViewById(R.id.tietTexturedMatPrice);
+        String texturedMatPriceStr = tietTexturedMatPrice.getText().toString();
+        int texturedMatPrice;
+        try {
+            texturedMatPrice = Integer.parseInt(texturedMatPriceStr);
+        } catch (NumberFormatException ex7) {
+            Toast.makeText(this, "Textured Mat price input field must not be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Initials and Formulas for calculating frame width and frame height using above variables
         double frameWidth;
         frameWidth = imageWidth + matMarginNeeded;
@@ -97,9 +132,9 @@ public class MainActivity extends AppCompatActivity {
         double totalFramePrice = framePricePerFoot * frameFeetNeeded;
         DecimalFormat df = new DecimalFormat("0.00");
 
+        double totalFilletPrice = filletPricePerFoot * frameFeetNeeded;
+
         // Gather User input from Standard Mat Qty field
-        int standardMatPrice = 45;
-        int oversizedStandardMatPrice = 95;
         EditText tietStandardMatQty = findViewById(R.id.tietStandardMatQty);
         String tietStandardMatQtyStr = tietStandardMatQty.getText().toString();
         int standardMatQty;
@@ -111,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Gather User input from Textured Mat Qty field
-        int texturedMatPrice = 88;
-        int oversizedTexturedMatPrice = 165;
         EditText tietTexturedMatQty = findViewById(R.id.tietTexturedMatQty);
         String tietTexturedMatQtyStr = tietTexturedMatQty.getText().toString();
         int texturedMatQty;
@@ -123,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Initialize mat rate and isMatOversized variable
+        /*// Initialize mat rate and isMatOversized variable
         boolean isMatOversized = (frameWidth >= 41 || frameHeight >= 41);
         int standardMatRate;
         int texturedMatRate;
@@ -135,12 +168,23 @@ public class MainActivity extends AppCompatActivity {
         } else {
             standardMatRate = standardMatPrice;
             texturedMatRate = texturedMatPrice;
-        }
+        }*/
 
+        // Calculate Glass Price
+        double totalCCGlassPrice;
+        double totalMuseumGlassPrice;
+        double ccGlassRate = 2.2;
+        double museumGlassRate = 4.1;
+        totalCCGlassPrice = (Math.ceil((frameWidth + frameHeight) * ccGlassRate));
+        totalMuseumGlassPrice = (Math.ceil((frameWidth + frameHeight) * museumGlassRate));
+
+        double underHourLaborRate = 50;
         double dryMountRate = 0;
         double spacersRate = 30;
+        double hardwareRate = 5;
         double foamCoreRate;
         double addOnSubtotal = 0;
+        double fittingAndLaborSubtotal = 0;
 
         // Check for Dry Mount and foam core Rate
         if (unitedInches <= 72) {
@@ -160,36 +204,41 @@ public class MainActivity extends AppCompatActivity {
         if (chipSpacers.isChecked()) {
             addOnSubtotal = addOnSubtotal + spacersRate;
         }
+        Chip chipCCGlass = findViewById(R.id.chipCCGlass);
+        if (chipCCGlass.isChecked()) {
+            TextView ccGlassSubtotalSummary = findViewById(R.id.tvCCGlassSubtotalOutput);
+            ccGlassSubtotalSummary.setText("CC: $" + df.format(totalCCGlassPrice));
+        }
+        Chip chipMuseumGlass = findViewById(R.id.chipMuseumGlass);
+        if (chipMuseumGlass.isChecked()) {
+            TextView museumGlassSubtotalSummary = findViewById(R.id.tvMuseumGlassSubtotalOutput);
+            museumGlassSubtotalSummary.setText("Museum: $" + df.format(totalMuseumGlassPrice));
+        }
+        Chip chipHardware = findViewById(R.id.chipHardware);
+        if (chipHardware.isChecked()) {
+            fittingAndLaborSubtotal = fittingAndLaborSubtotal + hardwareRate;
+        }
 
         // Calculate Total Mat Prices
-        int standardMatTotal = standardMatRate * standardMatQty;
-        int texturedMatTotal = texturedMatRate * texturedMatQty;
+        int standardMatTotal = standardMatPrice * standardMatQty;
+        int texturedMatTotal = texturedMatPrice * texturedMatQty;
         double totalMatPrice = standardMatTotal + texturedMatTotal;
 
-        // Calculate Glass Price
-        double totalCCGlassPrice;
-        double totalMuseumGlassPrice;
-        double ccGlassRate = 2.2;
-        double museumGlassRate = 4.1;
-        totalCCGlassPrice = (Math.ceil((frameWidth + frameHeight) * ccGlassRate));
-        totalMuseumGlassPrice = (Math.ceil((frameWidth + frameHeight) * museumGlassRate));
+
 
 
         // Build a Summary and display
         TextView tvFrameSizeSummary = findViewById(R.id.tvTotalFrameSizeOutput);
         tvFrameSizeSummary.setText(getText(frameWidth, frameHeight));
 
-        TextView materialSubtotalSummary = findViewById(R.id.tvFrameSubtotalOutput);
-        materialSubtotalSummary.setText("$" + df.format(totalFramePrice));
+        TextView frameSubtotalSummary = findViewById(R.id.tvFrameSubtotalOutput);
+        frameSubtotalSummary.setText("$" + df.format(totalFramePrice));
+
+        TextView filletSubtotalSummary = findViewById(R.id.tvFilletSubtotalOutput);
+        filletSubtotalSummary.setText("$" + df.format(totalFilletPrice));
 
         TextView matSubtotalSummary = findViewById(R.id.tvMatSubtotalOutput);
         matSubtotalSummary.setText("$" + df.format(totalMatPrice));
-
-        TextView ccGlassSubtotalSummary = findViewById(R.id.tvCCGlassSubtotalOutput);
-        ccGlassSubtotalSummary.setText("CC: $" + df.format(totalCCGlassPrice));
-
-        TextView museumGlassSubtotalSummary = findViewById(R.id.tvMuseumGlassSubtotalOutput);
-        museumGlassSubtotalSummary.setText("Museum: $" + df.format(totalMuseumGlassPrice));
 
         TextView tvAddOnSummary = findViewById(R.id.tvAddOnSubtotalOutput);
         tvAddOnSummary.setText("$" + df.format(addOnSubtotal));
