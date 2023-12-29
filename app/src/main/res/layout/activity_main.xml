@@ -15,7 +15,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Enter Image Dimensions:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +67,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Enter Mat Details:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
@@ -180,7 +180,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Enter Frame Details:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textInputLayout7" />
@@ -221,7 +221,8 @@
             android:id="@+id/tietFilletPricePerFoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fillet Price Per Foot" />
+            android:hint="Fillet Price Per Foot"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -231,19 +232,19 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Misc: "
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout9"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textInputLayout10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMisc">
 
@@ -257,14 +258,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout10"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
+        app:layout_constraintStart_toEndOf="@id/textInputLayout9"
+        app:layout_constraintTop_toBottomOf="@+id/tvMisc">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietMiscHardware"
@@ -280,11 +281,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Glass Options:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
-        android:text="Glass Options:" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgGlass"
@@ -293,8 +294,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGlassOptions"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/tvGlassOptions">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipCCGlass"
@@ -325,7 +325,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Add Ons:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cgGlass" />
@@ -367,7 +367,6 @@
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -378,7 +377,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:showDividers="middle|beginning|end"
         android:visibility="visible"
@@ -399,7 +397,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Frame Size: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -408,7 +406,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
         </TableRow>
@@ -426,7 +424,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Frame Subtotal: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -435,7 +433,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
 
@@ -454,7 +452,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Fillet Subtotal:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -463,7 +461,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -481,7 +479,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Mat Subtotal: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
 
@@ -491,7 +489,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -509,7 +507,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Glass Subtotal: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
 
@@ -519,7 +517,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -530,7 +528,6 @@
         android:id="@+id/tableLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:background="#FFFFFF"
         android:showDividers="middle|beginning|end"
@@ -551,7 +548,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Material Subtotal:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -560,7 +557,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -578,7 +575,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Fitting and Labor Subtotal:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -587,7 +584,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -605,7 +602,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Subtotal:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -614,7 +611,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -632,7 +629,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Tax:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -641,7 +638,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
@@ -659,7 +656,7 @@
                 android:layout_marginStart="16dp"
                 android:padding="10sp"
                 android:text="Total: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
             <TextView
@@ -668,7 +665,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:padding="10sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:visibility="visible" />
         </TableRow>
